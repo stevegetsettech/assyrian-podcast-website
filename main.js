@@ -8,6 +8,7 @@ const state = {
   episodeQuery: "",
   episodeYear: "all",
   episodeTopic: "all",
+  episodeArchiveExpanded: false,
   postType: "all",
   visiblePosts: 8,
   activePost: null,
@@ -27,6 +28,9 @@ const elements = {
   episodeSearch: document.querySelector("#episode-search"),
   yearFilter: document.querySelector("#year-filter"),
   topicFilters: document.querySelector("#topic-filters"),
+  episodeArchiveActions: document.querySelector("#episode-archive-actions"),
+  episodeArchiveNote: document.querySelector("#episode-archive-note"),
+  episodeArchiveToggle: document.querySelector("#episode-archive-toggle"),
   postFilters: document.querySelector("#post-filters"),
   postWall: document.querySelector("#post-wall"),
   loadMore: document.querySelector("#load-more"),
@@ -221,10 +225,27 @@ function episodeMarkup(episode) {
 }
 
 function renderEpisodes() {
-  const episodes = filteredEpisodes();
+  const matches = filteredEpisodes();
+  const filtersAreActive = Boolean(
+    state.episodeQuery.trim()
+    || state.episodeYear !== "all"
+    || state.episodeTopic !== "all"
+  );
+  const showCompleteArchive = filtersAreActive || state.episodeArchiveExpanded;
+  const episodes = showCompleteArchive ? matches : matches.slice(0, 5);
   elements.episodeList.innerHTML = episodes.map(episodeMarkup).join("");
-  elements.episodeCount.textContent = `${episodes.length} ${episodes.length === 1 ? "conversation" : "conversations"}`;
-  elements.episodeEmpty.hidden = episodes.length > 0;
+  elements.episodeCount.textContent = !showCompleteArchive && matches.length > 5
+    ? `5 latest conversations · ${matches.length} in the full archive`
+    : `${matches.length} ${matches.length === 1 ? "conversation" : "conversations"}`;
+  elements.episodeEmpty.hidden = matches.length > 0;
+  elements.episodeArchiveActions.hidden = filtersAreActive || matches.length <= 5;
+  elements.episodeArchiveToggle.setAttribute("aria-expanded", String(state.episodeArchiveExpanded));
+  elements.episodeArchiveToggle.textContent = state.episodeArchiveExpanded
+    ? "Show latest 5 ↑"
+    : `Browse all ${matches.length} episodes ↓`;
+  elements.episodeArchiveNote.textContent = state.episodeArchiveExpanded
+    ? "You’re viewing the complete collection, from the newest release back to the 2018 trailer."
+    : `${matches.length - 5} more conversations are waiting in the complete archive.`;
 }
 
 function setActiveFilter(buttons, selectedButton) {
@@ -264,6 +285,12 @@ function resetEpisodeFilters() {
 
 document.querySelector("#reset-filters").addEventListener("click", resetEpisodeFilters);
 document.querySelector("[data-reset-filters]").addEventListener("click", resetEpisodeFilters);
+elements.episodeArchiveToggle.addEventListener("click", () => {
+  const wasExpanded = state.episodeArchiveExpanded;
+  state.episodeArchiveExpanded = !wasExpanded;
+  renderEpisodes();
+  if (wasExpanded) document.querySelector("#episodes-title").scrollIntoView({ behavior: "smooth", block: "start" });
+});
 
 /* Audio player */
 function episodeByKey(key) {

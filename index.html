@@ -108,10 +108,14 @@
             <button class="reset-button" id="reset-filters" type="button">Reset filters</button>
           </div>
           <div class="episode-list" id="episode-list"></div>
+          <div class="episode-archive-actions" id="episode-archive-actions" hidden>
+            <p id="episode-archive-note">Looking for something older? The complete archive reaches back to 2018.</p>
+            <button id="episode-archive-toggle" type="button" aria-expanded="false">Browse full archive <span aria-hidden="true">↓</span></button>
+          </div>
           <div class="empty-state" id="episode-empty" hidden>
             <p class="eyebrow">No match yet</p>
             <h3>Try a broader word or another year.</h3>
-            <button class="button button--outline" type="button" data-reset-filters>Show every episode</button>
+            <button class="button button--outline" type="button" data-reset-filters>Clear filters</button>
           </div>
         </section>
 

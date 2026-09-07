@@ -109,6 +109,10 @@ img, video { display: block; max-width: 100%; }
 .episode-results-bar p { margin: 0; color: var(--ink-soft); font-size: .72rem; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
 .reset-button { border: 0; border-bottom: 1px solid var(--ink); padding: .2rem 0; background: none; color: var(--ink); cursor: pointer; font-size: .67rem; text-transform: uppercase; font-weight: 800; }
 .episode-list { border-top: 1px solid var(--ink); }
+.episode-archive-actions { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center; margin-top: 1.5rem; padding: 1.25rem 1.4rem; border: 1px solid var(--ink); background: var(--sky); }
+.episode-archive-actions p { margin: 0; color: var(--ink-soft); font: italic 1.15rem/1.35 var(--serif); }
+.episode-archive-actions button { min-width: 220px; border: 1px solid var(--ink); padding: .9rem 1.1rem; background: var(--ink); color: white; cursor: pointer; font-size: .67rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; transition: background .2s, color .2s, transform .2s; }
+.episode-archive-actions button:hover { background: var(--ember); border-color: var(--ember); transform: translateY(-2px); }
 .episode-item { border-bottom: 1px solid var(--ink); }
 .episode-item__main { display: grid; grid-template-columns: 92px minmax(130px, .38fr) minmax(0, 1fr) auto; gap: clamp(1rem, 3vw, 3rem); align-items: center; padding: clamp(1rem, 2vw, 1.7rem) .5rem; transition: background .22s ease, padding .22s ease; }
 .episode-item:hover .episode-item__main { background: var(--paper-bright); padding-left: 1rem; padding-right: 1rem; }
@@ -298,6 +302,8 @@ img, video { display: block; max-width: 100%; }
   .section-intro { margin-left: 0; }
   .episode-controls { grid-template-columns: 1fr; }
   .topic-filters { grid-column: auto; }
+  .episode-archive-actions { grid-template-columns: 1fr; }
+  .episode-archive-actions button { width: 100%; min-width: 0; }
   .episode-item__main { grid-template-columns: 56px 104px 1fr; gap: .8rem; padding-left: 0; padding-right: 0; }
   .episode-item__number { font-size: 2rem; }
   .episode-item__image { aspect-ratio: 3/4; }
