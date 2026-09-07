@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#153248" />
+    <meta name="description" content="The Assyrian Podcast — unfiltered conversations with Assyrians shaping culture, community, and the future around the world." />
+    <meta property="og:title" content="The Assyrian Podcast" />
+    <meta property="og:description" content="Our voices. Our story. Conversations with Assyrians around the world." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./assets/images/social-preview.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Assyrian Podcast" />
+    <meta name="twitter:description" content="Our voices. Our story. Conversations with Assyrians around the world." />
+    <meta name="twitter:image" content="./assets/images/social-preview.png" />
+    <title>The Assyrian Podcast</title>
+    <link rel="icon" href="./assets/images/assyrian-podcast-mark.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <section class="gate" id="gate" aria-labelledby="gate-title">
+      <div class="gate__texture" aria-hidden="true"></div>
+      <div class="gate__panel">
+        <img class="gate__mark" src="./assets/images/assyrian-podcast-mark.jpg" alt="The Assyrian Podcast illustrated mark" />
+        <p class="eyebrow">A podcast by Assyrians, for Assyrians worldwide</p>
+        <h1 id="gate-title">Come in.<br /><em>Stay awhile.</em></h1>
+        <p class="gate__intro">Enter the community password to open the listening room.</p>
+        <form id="gate-form" class="gate__form">
+          <label class="sr-only" for="password">Community password</label>
+          <div class="gate__input-row">
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Community password" required />
+            <button type="submit">Enter</button>
+          </div>
+          <label class="remember"><input id="remember" type="checkbox" checked /> Keep me signed in on this device</label>
+          <p class="gate__error" id="gate-error" role="alert" aria-live="polite"></p>
+        </form>
+      </div>
+      <p class="gate__footer">Nineveh to the world · Est. 2018</p>
+    </section>
+
+    <div id="site-shell" hidden>
+      <header class="site-header" id="top">
+        <a class="brand" href="#top" aria-label="The Assyrian Podcast home">
+          <img src="./assets/images/assyrian-podcast-mark.jpg" alt="" />
+          <span>The Assyrian<br />Podcast</span>
+        </a>
+        <nav aria-label="Primary navigation">
+          <a href="#episodes">Episodes</a>
+          <a href="#community">Community</a>
+          <a href="#about">About</a>
+          <a href="#team">Team</a>
+        </nav>
+        <a class="listen-pill" href="#episodes">Listen now <span aria-hidden="true">↘</span></a>
+      </header>
+
+      <main id="main">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero__copy">
+            <p class="eyebrow">Stories carried across generations</p>
+            <h1 id="hero-title">Our voices.<br /><em>Our story.</em></h1>
+            <p class="hero__lede">Unfiltered conversations with the artists, athletes, scholars, and builders shaping Assyrian life around the world.</p>
+            <button class="button button--primary" type="button" data-play-episode="221">Play latest episode</button>
+          </div>
+          <article class="hero__feature">
+            <img src="./assets/images/episode-221-bryner-agassi.jpg" alt="Episode 221 featuring Bryner Agassi" />
+            <div class="hero__feature-meta"><span>Episode 221</span><span>1 hr 36 min</span></div>
+          </article>
+          <p class="hero__rail" aria-hidden="true">ASSYRIA · DIASPORA · MEMORY · FUTURE</p>
+        </section>
+
+        <div class="story-ticker" aria-label="Podcast themes">
+          <div>
+            <span>Culture in motion</span><b>ܐ</b><span>223 conversations</span><b>ܐ</b><span>Voices across the diaspora</span><b>ܐ</b><span>Stories for the next generation</span><b>ܐ</b>
+          </div>
+        </div>
+
+        <section class="section episodes-section" id="episodes" aria-labelledby="episodes-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">The listening room</p>
+              <p class="section-index">01 / Episodes</p>
+            </div>
+            <div>
+              <h2 id="episodes-title">Find a conversation<br /><em>that stays with you.</em></h2>
+              <p class="section-intro">Search by guest, filter a year, or follow a theme. Every episode opens into show notes and guest context without taking you away from the player.</p>
+            </div>
+          </div>
+
+          <div class="episode-controls" aria-label="Episode filters">
+            <label class="search-field" for="episode-search">
+              <span>Search guest or story</span>
+              <input id="episode-search" type="search" placeholder="Try “music” or “Dyana”" />
+            </label>
+            <label class="select-field" for="year-filter">
+              <span>Year</span>
+              <select id="year-filter"><option value="all">All years</option></select>
+            </label>
+            <div class="topic-filters" id="topic-filters" aria-label="Filter by topic"></div>
+          </div>
+
+          <div class="episode-results-bar">
+            <p id="episode-count" aria-live="polite">Loading episodes…</p>
+            <button class="reset-button" id="reset-filters" type="button">Reset filters</button>
+          </div>
+          <div class="episode-list" id="episode-list"></div>
+          <div class="empty-state" id="episode-empty" hidden>
+            <p class="eyebrow">No match yet</p>
+            <h3>Try a broader word or another year.</h3>
+            <button class="button button--outline" type="button" data-reset-filters>Show every episode</button>
+          </div>
+        </section>
+
+        <section class="community-section" id="community" aria-labelledby="community-title">
+          <div class="community-heading">
+            <div>
+              <p class="eyebrow">Community & visuals</p>
+              <p class="section-index">02 / Photo wall</p>
+            </div>
+            <h2 id="community-title">The people behind<br /><em>the sound.</em></h2>
+            <p>Family archives, episode artwork, community milestones, and dispatches from across the diaspora. Select any frame for the full caption and carousel.</p>
+          </div>
+          <div class="wall-controls">
+            <div class="post-filters" id="post-filters" aria-label="Media filters"></div>
+            <a href="https://www.instagram.com/assyrianpodcast" target="_blank" rel="noopener">Follow @assyrianpodcast <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="post-wall" id="post-wall"></div>
+          <div class="load-more-wrap"><button class="button button--light" id="load-more" type="button">Load more stories</button></div>
+        </section>
+
+        <section class="manifesto" aria-label="Podcast statement">
+          <p class="manifesto__mark" aria-hidden="true">ܐ</p>
+          <blockquote>“A living archive is made one honest conversation at a time.”</blockquote>
+          <p>Across cities, languages, generations, and traditions, the story keeps moving.</p>
+        </section>
+
+        <section class="section about-section" id="about" aria-labelledby="about-title">
+          <div class="about-art">
+            <img src="./assets/images/assyrian-podcast-mark.jpg" alt="The Assyrian Podcast illustrated mark" />
+            <span>Est. 2018</span>
+          </div>
+          <div class="about-copy">
+            <p class="eyebrow">About the show</p>
+            <h2 id="about-title">Assyrians everywhere,<br /><em>in their own words.</em></h2>
+            <p class="about-lede">The Assyrian Podcast dives deep into the soul of Assyria through interviews with influential Assyrians from around the globe.</p>
+            <p>Each conversation holds space for the specificity that makes a culture real: the family stories, creative risks, public service, faith, humor, grief, ambition, language, and everyday choices that carry identity forward.</p>
+            <a class="text-link" href="mailto:info@assyrianpodcast.com">Suggest a guest <span aria-hidden="true">↗</span></a>
+          </div>
+          <dl class="show-stats">
+            <div><dt>2018</dt><dd>The first episode</dd></div>
+            <div><dt>223</dt><dd>Published conversations</dd></div>
+            <div><dt>Global</dt><dd>One community, many homes</dd></div>
+          </dl>
+        </section>
+
+        <section class="team-section" id="team" aria-labelledby="team-title">
+          <div class="team-heading">
+            <div>
+              <p class="eyebrow">The people asking the questions</p>
+              <p class="section-index">03 / AP Team</p>
+            </div>
+            <div>
+              <h2 id="team-title">Eight perspectives.<br /><em>One listening room.</em></h2>
+              <p>Based across North America and Europe, the current team brings its own lived experience to every conversation.</p>
+            </div>
+          </div>
+          <div class="team-list">
+            <article class="team-member">
+              <span class="team-member__index">01</span>
+              <div class="team-member__identity"><img src="./assets/images/team-steve.jpg" alt="Steve" loading="lazy" /><h3>Steve<small>Co-Founder & Co-Host · Bay Area, California</small></h3></div>
+              <p>Steve started the podcast to inspire Assyrians and other ethnic minorities by helping people share their stories and the greatness they carry.</p>
+            </article>
+            <article class="team-member">
+              <span class="team-member__index">02</span>
+              <div class="team-member__identity"><img src="./assets/images/team-adessa.jpg" alt="Adessa" loading="lazy" /><h3>Adessa<small>Co-Founder & Co-Host · Canada</small></h3></div>
+              <p>Adessa believes sharing stories can bring a diasporic people closer. Music, dance, travel, and Assyrian culture remain central to her life.</p>
+            </article>
+            <article class="team-member">
+              <span class="team-member__index">03</span>
+              <div class="team-member__identity"><img src="./assets/images/team-roda.jpg" alt="Roda" loading="lazy" /><h3>Roda<small>Co-Host · Michigan, USA</small></h3></div>
+              <p>Roda’s love of people and their stories grew from a childhood surrounded by books. She brings curiosity, warmth, and an adventurous eye to the team.</p>
+            </article>
+            <article class="team-member">
+              <span class="team-member__index">04</span>
+              <div class="team-member__identity"><img src="./assets/images/team-peter.jpg" alt="Peter" loading="lazy" /><h3>Peter<small>Co-Host · California</small></h3></div>
+              <p>With a background in local government, grantmaking, and urban planning, Peter works to preserve Assyrian language, culture, and identity.</p>
+            </article>
+            <article class="team-member">
+              <span class="team-member__index">05</span>
+              <div class="team-member__identity"><img src="./assets/images/team-marina.jpg" alt="Marina" loading="lazy" /><h3>Marina<small>Co-Host · Spain & Finland</small></h3></div>
+              <p>Marina explores how identity shapes lived experience and hopes to uplift the many ways Assyrian culture appears across different paths and places.</p>
+            </article>
+            <article class="team-member">
+              <span class="team-member__index">06</span>
+              <div class="team-member__identity"><img src="./assets/images/team-sarha.jpg" alt="Sarha" loading="lazy" /><h3>Sarha<small>Co-Host · Chicago</small></h3></div>
+              <p>An anthropology graduate and longtime community volunteer, Sarha brings a love of ethnography, storytelling, writing, and local service.</p>
+            </article>
+            <article class="team-member">
+              <span class="team-member__index">07</span>
+              <div class="team-member__identity"><img src="./assets/images/team-mark.jpg" alt="Mark" loading="lazy" /><h3>Mark<small>Co-Host · Central California & Bay Area</small></h3></div>
+              <p>Mark combines a communications and radio background with a commitment to preserving Assyrian language, culture, and identity.</p>
+            </article>
+            <article class="team-member">
+              <span class="team-member__index">08</span>
+              <div class="team-member__identity"><img src="./assets/images/team-stephanie.jpg" alt="Stephanie" loading="lazy" /><h3>Stephanie<small>Social Media Guru & Co-Host</small></h3></div>
+              <p>Raised between Assyrian and Greek traditions in Melbourne, Stephanie brings cultural care, creative energy, and a passion for community service.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="listen-section" id="listen" aria-labelledby="listen-title">
+          <div>
+            <p class="eyebrow">Take the stories with you</p>
+            <h2 id="listen-title">Choose your<br /><em>listening place.</em></h2>
+          </div>
+          <div class="platform-list">
+            <a href="https://open.spotify.com/show/492uaeGYCufUBcyQ2iv4e2" target="_blank" rel="noopener"><span>01</span><strong>Spotify</strong><i aria-hidden="true">↗</i></a>
+            <a href="https://podcasts.apple.com/us/podcast/assyrian-podcast/id1344367350" target="_blank" rel="noopener"><span>02</span><strong>Apple Podcasts</strong><i aria-hidden="true">↗</i></a>
+            <a href="https://assyrianpodcast.podbean.com/" target="_blank" rel="noopener"><span>03</span><strong>Podbean</strong><i aria-hidden="true">↗</i></a>
+            <a href="https://www.youtube.com/results?search_query=The+Assyrian+Podcast" target="_blank" rel="noopener"><span>04</span><strong>YouTube</strong><i aria-hidden="true">↗</i></a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="site-footer__brand"><img src="./assets/images/assyrian-podcast-mark.jpg" alt="" /><span>The Assyrian Podcast</span></div>
+        <p>Dive deep into the soul of Assyria.</p>
+        <div class="site-footer__links">
+          <a href="https://www.instagram.com/assyrianpodcast" target="_blank" rel="noopener">Instagram</a>
+          <a href="mailto:info@assyrianpodcast.com">Email</a>
+          <button type="button" id="lock-site">Lock site</button>
+        </div>
+        <small>© <span id="copyright-year"></span> The Assyrian Podcast</small>
+      </footer>
+
+      <aside class="player" id="player" aria-label="Persistent audio player">
+        <button class="player__collapse" id="player-collapse" type="button" aria-label="Minimize player">↓</button>
+        <div class="player__track">
+          <span class="player__number" id="player-number">221</span>
+          <div><small>Now playing</small><strong id="player-title">Bryner Agassi</strong></div>
+        </div>
+        <button class="player__play" id="player-play" type="button" aria-label="Play Bryner Agassi">PLAY</button>
+        <input class="player__scrub" id="player-scrub" type="range" min="0" max="1000" value="0" aria-label="Episode position" />
+        <span class="player__time" id="player-time">00:00 / 1:36:35</span>
+        <button class="player__speed" id="player-speed" type="button" aria-label="Change playback speed">1×</button>
+        <div class="player__links" aria-label="Open podcast platform">
+          <a href="https://open.spotify.com/show/492uaeGYCufUBcyQ2iv4e2" target="_blank" rel="noopener">S</a>
+          <a href="https://podcasts.apple.com/us/podcast/assyrian-podcast/id1344367350" target="_blank" rel="noopener">A</a>
+          <a href="https://www.youtube.com/results?search_query=The+Assyrian+Podcast" target="_blank" rel="noopener">Y</a>
+        </div>
+        <audio id="audio" preload="metadata" src="https://mcdn.podbean.com/mf/web/96sgae6p4g9w3xpg/ep_221_Brynner_mixdownarbko.mp3"></audio>
+      </aside>
+    </div>
+
+    <dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-title">
+      <button class="lightbox__close" id="lightbox-close" type="button" aria-label="Close media viewer">Close</button>
+      <div class="lightbox__media">
+        <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" type="button" aria-label="Previous image">←</button>
+        <div id="lightbox-stage"></div>
+        <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" type="button" aria-label="Next image">→</button>
+        <p class="lightbox__position" id="lightbox-position"></p>
+      </div>
+      <div class="lightbox__copy">
+        <p class="eyebrow" id="lightbox-date"></p>
+        <h2 id="lightbox-title"></h2>
+        <p class="lightbox__note" id="lightbox-note"></p>
+        <p class="lightbox__caption" id="lightbox-caption"></p>
+        <div class="lightbox__tags" id="lightbox-tags"></div>
+      </div>
+    </dialog>
+
+    <noscript><p class="noscript">This listening room needs JavaScript for the access gate, episode filters, gallery, and audio player.</p></noscript>
+    <script src="./data/content-data.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>

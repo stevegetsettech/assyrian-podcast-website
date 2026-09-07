@@ -1,0 +1,17 @@
+{
+  "name": "the-assyrian-podcast",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/generate-data-bundle.mjs",
+    "dev": "vite",
+    "prebuild": "node scripts/generate-data-bundle.mjs",
+    "build": "vite build",
+    "preview": "vite preview",
+    "sync:episodes": "node scripts/sync-episodes.mjs && node scripts/generate-data-bundle.mjs"
+  },
+  "devDependencies": {
+    "vite": "^7.1.5"
+  }
+}
